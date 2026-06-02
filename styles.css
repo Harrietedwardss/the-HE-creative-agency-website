@@ -214,6 +214,14 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
   transform: translateY(-50%);
 }
 
+/* Founded byline — sits just below the nav */
+.hero-founded {
+  position: absolute; top: 80px; left: 0; right: 0; z-index: 3;
+  text-align: center;
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+}
+
 /* Hero content — left-aligned split layout */
 .hero-center {
   position: relative; z-index: 2;
