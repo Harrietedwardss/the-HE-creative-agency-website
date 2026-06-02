@@ -126,9 +126,9 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
   text-transform: uppercase; color: var(--charcoal); transition: color 0.2s; white-space: nowrap;
 }
 .nav-link:hover { color: var(--black); }
-.nav-logo { justify-self: center; align-self: stretch; display: flex; align-items: stretch; }
+.nav-logo { justify-self: center; }
 .nav-logo-img {
-  height: 100%; width: auto; display: block;
+  height: 52px; width: auto; display: block;
   object-fit: contain;
 }
 
