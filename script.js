@@ -6,37 +6,30 @@
 
 const cursorGlass = document.getElementById('cursor-glass');
 const cursorDot   = document.getElementById('cursor-dot');
-
 let mouseX = 0, mouseY = 0;
-let glassX = 0, glassY = 0;
-let dotX   = 0, dotY   = 0;
+let glassX = 0, glassY = 0, dotX = 0, dotY = 0;
 
 document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+  mouseX = e.clientX; mouseY = e.clientY;
   document.body.classList.add('cursor-on');
 });
-
 document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-on'));
 document.addEventListener('mouseenter', () => document.body.classList.add('cursor-on'));
 
 function animateCursor() {
   dotX   += (mouseX - dotX)   * 0.88;
   dotY   += (mouseY - dotY)   * 0.88;
-  glassX += (mouseX - glassX) * 0.14;
-  glassY += (mouseY - glassY) * 0.14;
-
+  glassX += (mouseX - glassX) * 0.12;
+  glassY += (mouseY - glassY) * 0.12;
   cursorDot.style.left   = dotX   + 'px';
   cursorDot.style.top    = dotY   + 'px';
   cursorGlass.style.left = glassX + 'px';
   cursorGlass.style.top  = glassY + 'px';
-
   requestAnimationFrame(animateCursor);
 }
-
 animateCursor();
 
-document.querySelectorAll('a, button, .service, .work-cell, .field-input, .field-textarea').forEach(el => {
+document.querySelectorAll('a, button, .service, .gallery-cell, .brand-card, .field-input, .field-textarea').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
 });
@@ -69,6 +62,32 @@ document.querySelectorAll('.mobile-link').forEach(link => {
 });
 
 
+// ----- Hero: word-by-word reveal -----
+
+function wrapWords(element) {
+  const html = element.innerHTML;
+  const parts = html.split(/(<[^>]+>|\s+)/);
+  element.innerHTML = parts.map(part => {
+    if (part.startsWith('<') || part.trim() === '') return part;
+    return `<span class="word"><span class="word-inner">${part}</span></span>`;
+  }).join('');
+}
+
+const heroSlogan = document.getElementById('hero-slogan');
+if (heroSlogan) {
+  wrapWords(heroSlogan);
+  const inners = heroSlogan.querySelectorAll('.word-inner');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      heroSlogan.classList.add('revealed');
+      inners.forEach((inner, i) => {
+        inner.style.transitionDelay = `${0.4 + i * 0.07}s`;
+      });
+    }, 300);
+  });
+}
+
+
 // ----- Scroll Reveal -----
 
 const revealObserver = new IntersectionObserver(entries => {
@@ -78,22 +97,13 @@ const revealObserver = new IntersectionObserver(entries => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -56px 0px' });
-
-// Stagger siblings within the same parent
-document.querySelectorAll('.section-wrap, .about-grid, .about-right, .services-list, .work-grid, .process-row, .quotes-grid, .contact-grid').forEach(parent => {
-  const children = parent.querySelectorAll(':scope > .reveal, :scope > .fade-up');
-  children.forEach((el, i) => {
-    if (i > 0) el.style.transitionDelay = `${i * 0.1}s`;
-  });
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// Hero fades in on load
 window.addEventListener('load', () => {
-  document.querySelectorAll('.hero .fade-up').forEach(el => {
-    setTimeout(() => el.classList.add('visible'), 200);
+  document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 200 + i * 120);
   });
 });
 
@@ -102,52 +112,69 @@ window.addEventListener('load', () => {
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-    const id = link.getAttribute('href');
-    const target = document.querySelector(id);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
 
 
-// ----- Work Lightbox -----
+// ----- Parallax Scroll Text -----
 
-const lightbox      = document.getElementById('lightbox');
-const lightboxBody  = document.getElementById('lightbox-body');
-const lightboxClose = document.getElementById('lightbox-close');
+const fwdText = document.getElementById('scroll-text-fwd');
+const revText = document.getElementById('scroll-text-rev');
 
-document.querySelectorAll('.work-cell').forEach(cell => {
-  cell.addEventListener('click', () => {
-    const title = cell.dataset.title || '';
-    const cat   = cell.dataset.cat   || '';
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (fwdText) fwdText.style.transform = `translateX(${-y * 0.06}px)`;
+  if (revText) revText.style.transform = `translateX(${y * 0.06}px)`;
+}, { passive: true });
 
-    lightboxBody.innerHTML = `
-      <p>${cat}</p>
-      <h3>${title}</h3>
-    `;
 
-    lightbox.hidden = false;
-    document.body.style.overflow = 'hidden';
-    lightboxClose.focus();
+// ----- Parallax Images -----
+
+const parallaxEls = document.querySelectorAll('.parallax-img img');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  parallaxEls.forEach(img => {
+    const parent = img.closest('.parallax-img');
+    if (!parent) return;
+    const rect = parent.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (rect.bottom < 0 || rect.top > vh) return;
+    const progress = (vh - rect.top) / (vh + rect.height);
+    const shift = (progress - 0.5) * 40;
+    img.style.transform = `translateY(${shift}px) scale(1.06)`;
   });
-});
+}, { passive: true });
 
-function closeLightbox() {
-  lightbox.hidden = true;
-  document.body.style.overflow = '';
+
+// ----- Stat Counters -----
+
+function animateCounter(el) {
+  const target   = parseInt(el.dataset.count, 10);
+  const suffix   = el.dataset.suffix || '';
+  const duration = 1800;
+  const start    = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }
 
-lightboxClose.addEventListener('click', closeLightbox);
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
 
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
-});
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
 
 // ----- Contact Form -----
@@ -155,20 +182,20 @@ document.addEventListener('keydown', e => {
 const form        = document.getElementById('form');
 const formSuccess = document.getElementById('form-success');
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const btn = form.querySelector('.form-btn');
-  const originalHTML = btn.innerHTML;
-  btn.innerHTML = 'Sending…';
-  btn.disabled = true;
-
-  setTimeout(() => {
-    form.reset();
-    btn.innerHTML = originalHTML;
-    btn.disabled = false;
-    formSuccess.textContent = 'Message sent — we\'ll be in touch soon.';
-    formSuccess.classList.add('show');
-    setTimeout(() => formSuccess.classList.remove('show'), 5000);
-  }, 1200);
-});
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-btn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      form.reset();
+      btn.innerHTML = orig;
+      btn.disabled = false;
+      formSuccess.textContent = "Message sent — we'll be in touch soon.";
+      formSuccess.classList.add('show');
+      setTimeout(() => formSuccess.classList.remove('show'), 5000);
+    }, 1200);
+  });
+}
