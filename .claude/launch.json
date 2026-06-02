@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "HE Agency Site",
+      "runtimeExecutable": "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+      "runtimeArgs": ["server.js"],
+      "port": 3456
+    }
+  ]
+}

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The HE Creative Agency — Curating clarity through simplistic design. Sydney, Australia.">
+  <meta property="og:title" content="The HE Creative Agency">
+  <meta property="og:description" content="Curating clarity through simplistic design.">
+  <title>The HE Creative Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!--
+    CURSOR: Save your espresso martini PNG as images/cursor-martini.png
+    The image will appear as the custom cursor automatically.
+  -->
+  <div class="cursor-glass" id="cursor-glass">
+    <img src="images/cursor-martini.png" alt="" aria-hidden="true">
+  </div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+      </div>
+      <a href="#home" class="nav-logo" aria-label="The HE Creative Agency">
+        <div class="logomark">
+          <span>HE</span>
+          <div class="logomark-rule"></div>
+        </div>
+      </a>
+      <div class="nav-right">
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-links">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#process" class="mobile-link">Process</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+  </div>
+
+  <main id="home">
+
+    <!-- ================================================
+         HERO — full screen, watermark, slogan
+         ================================================ -->
+    <section class="hero" id="hero">
+      <!-- HE logo watermark -->
+      <div class="hero-watermark" aria-hidden="true">
+        <span>HE</span>
+        <div class="hero-watermark-rule"></div>
+      </div>
+
+      <div class="hero-center">
+        <p class="hero-meta fade-up delay-1">
+          <span>Est. 2026</span>
+          <span class="sep">—</span>
+          <span>Sydney, Australia</span>
+        </p>
+        <div class="hero-split fade-up delay-2">
+          <h1 class="hero-slogan" id="hero-slogan">
+            Curating clarity<br>through <em>simplistic</em><br>design.
+          </h1>
+          <div class="hero-services">
+            <p>Brand Identity</p>
+            <p>Digital Strategy</p>
+            <p>Creative Direction</p>
+          </div>
+        </div>
+        <a href="#about" class="hero-scroll-btn fade-up delay-3">
+          <span>Scroll to explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================================================
+         TICKER — dark, inverted
+         ================================================ -->
+    <div class="ticker ticker-dark" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Brand Identity</span><span class="tick-dot">·</span>
+        <span>Creative Direction</span><span class="tick-dot">·</span>
+        <span>UX/UI Design</span><span class="tick-dot">·</span>
+        <span>Website Design</span><span class="tick-dot">·</span>
+        <span>Content Creation</span><span class="tick-dot">·</span>
+        <span>Social Strategy</span><span class="tick-dot">·</span>
+        <span>Campaign Concepts</span><span class="tick-dot">·</span>
+        <span>Digital Marketing</span><span class="tick-dot">·</span>
+        <span>Brand Identity</span><span class="tick-dot">·</span>
+        <span>Creative Direction</span><span class="tick-dot">·</span>
+        <span>UX/UI Design</span><span class="tick-dot">·</span>
+        <span>Website Design</span><span class="tick-dot">·</span>
+        <span>Content Creation</span><span class="tick-dot">·</span>
+        <span>Social Strategy</span><span class="tick-dot">·</span>
+        <span>Campaign Concepts</span><span class="tick-dot">·</span>
+        <span>Digital Marketing</span><span class="tick-dot">·</span>
+      </div>
+    </div>
+
+    <!-- ================================================
+         SCROLL TEXT — large parallax moving headline
+         ================================================ -->
+    <div class="scroll-text-wrap" aria-hidden="true">
+      <p class="scroll-text-line" id="scroll-text-fwd">
+        STRATEGY &nbsp;·&nbsp; DESIGN &nbsp;·&nbsp; DIRECTION &nbsp;·&nbsp; CREATIVITY &nbsp;·&nbsp;
+        STRATEGY &nbsp;·&nbsp; DESIGN &nbsp;·&nbsp; DIRECTION &nbsp;·&nbsp; CREATIVITY &nbsp;·&nbsp;
+        STRATEGY &nbsp;·&nbsp; DESIGN &nbsp;·&nbsp; DIRECTION &nbsp;·&nbsp; CREATIVITY &nbsp;·&nbsp;
+      </p>
+      <p class="scroll-text-line scroll-text-rev" id="scroll-text-rev">
+        IDENTITY &nbsp;·&nbsp; BRAND &nbsp;·&nbsp; CURATE &nbsp;·&nbsp; COMMUNICATE &nbsp;·&nbsp;
+        IDENTITY &nbsp;·&nbsp; BRAND &nbsp;·&nbsp; CURATE &nbsp;·&nbsp; COMMUNICATE &nbsp;·&nbsp;
+        IDENTITY &nbsp;·&nbsp; BRAND &nbsp;·&nbsp; CURATE &nbsp;·&nbsp; COMMUNICATE &nbsp;·&nbsp;
+      </p>
+    </div>
+
+    <!-- ================================================
+         ABOUT
+         ================================================ -->
+    <section class="about" id="about">
+      <div class="section-wrap">
+        <p class="handle reveal">@the_he_creative_agency</p>
+        <div class="about-grid">
+          <div class="about-left">
+            <p class="section-eyebrow reveal">01 — About</p>
+            <h2 class="section-heading reveal">Strategy-led<br><em>creativity.</em></h2>
+            <p class="about-body reveal">
+              The HE Creative Agency is a boutique creative studio built on the belief that great design is never accidental. We combine rigorous strategy with refined visual craft to build brands that resonate, convert, and endure.
+            </p>
+            <p class="about-body reveal">
+              We work with ambitious founders, emerging brands, and established businesses who understand that creative excellence is not a luxury &mdash; it is a competitive advantage.
+            </p>
+            <div class="about-stats reveal">
+              <div class="stat">
+                <span class="stat-n" data-count="6">0</span>
+                <span class="stat-l">Core services</span>
+              </div>
+              <div class="stat">
+                <span class="stat-n" data-count="100" data-suffix="%">0%</span>
+                <span class="stat-l">Strategy-led</span>
+              </div>
+              <div class="stat">
+                <span class="stat-n">&infin;</span>
+                <span class="stat-l">Creative ambition</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-images reveal">
+            <div class="about-img-main parallax-img">
+              <img src="images/about-main.png" alt="The HE Creative Agency lookbook">
+            </div>
+          </div>
+        </div>
+        <div class="section-divider reveal"></div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         WHAT IS A CREATIVE AGENCY
+         ================================================ -->
+    <section class="brand-info">
+      <div class="brand-info-watermark" aria-hidden="true">
+        <img src="images/HELOGO.png" alt="">
+      </div>
+      <div class="section-wrap brand-info-editorial">
+        <p class="handle reveal">@the_he_creative_agency</p>
+        <h2 class="section-heading reveal">What is a<br><em>Creative Agency?</em></h2>
+        <p class="brand-info-desc reveal">We create &amp; communicate your brand&rsquo;s identity through various forms of physical and digital marketing, strategy and design.</p>
+      </div>
+    </section>
+
+    <!-- ================================================
+         SERVICES
+         ================================================ -->
+    <section class="services" id="services">
+      <div class="section-wrap">
+        <p class="handle reveal">@the_he_creative_agency</p>
+        <div class="services-head">
+          <p class="section-eyebrow reveal">02 — Services</p>
+          <h2 class="section-heading reveal">What we<br><em>create.</em></h2>
+        </div>
+        <ul class="services-list" role="list">
+          <li class="service reveal">
+            <span class="service-n">01</span>
+            <div class="service-body">
+              <h3 class="service-name">Brand Identity</h3>
+              <p class="service-desc">From naming and positioning to visual systems and brand guidelines &mdash; we build identities that are distinctive, strategic and built to last.</p>
+            </div>
+          </li>
+          <li class="service reveal">
+            <span class="service-n">02</span>
+            <div class="service-body">
+              <h3 class="service-name">Creative Direction</h3>
+              <p class="service-desc">Holistic creative vision across campaigns, photoshoots and content. We define the visual language that sets your brand apart.</p>
+            </div>
+          </li>
+          <li class="service reveal">
+            <span class="service-n">03</span>
+            <div class="service-body">
+              <h3 class="service-name">UX/UI Design</h3>
+              <p class="service-desc">Intuitive, beautiful digital products and interfaces designed with both user experience and aesthetic precision in mind.</p>
+            </div>
+          </li>
+          <li class="service reveal">
+            <span class="service-n">04</span>
+            <div class="service-body">
+              <h3 class="service-name">Website Design</h3>
+              <p class="service-desc">Premium web experiences that are fast, accessible, and conversion-led &mdash; without compromising on design excellence.</p>
+            </div>
+          </li>
+          <li class="service reveal">
+            <span class="service-n">05</span>
+            <div class="service-body">
+              <h3 class="service-name">Content Creation</h3>
+              <p class="service-desc">Photography concepts, copy direction and digital assets crafted to elevate your brand across every touchpoint.</p>
+            </div>
+          </li>
+          <li class="service reveal">
+            <span class="service-n">06</span>
+            <div class="service-body">
+              <h3 class="service-name">Social Strategy</h3>
+              <p class="service-desc">Strategic social presence built on brand clarity, audience understanding, and content that performs as well as it looks.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================
+         EDITORIAL GALLERY
+         ================================================ -->
+    <section class="gallery">
+      <div class="gallery-grid">
+        <div class="gallery-cell gallery-full reveal parallax-img">
+          <img src="images/editorial-shoes.png" alt="Campaign direction — The HE Creative Agency">
+        </div>
+        <div class="gallery-cell reveal parallax-img">
+          <img src="images/editorial-sunglasses.png" alt="Campaign direction — The HE Creative Agency">
+        </div>
+        <div class="gallery-cell gallery-tall reveal parallax-img">
+          <img src="images/editorial-cameras.png" alt="Creative direction — The HE Creative Agency">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         LET'S TALK STRATEGY
+         ================================================ -->
+    <section class="lets-talk">
+      <div class="section-wrap">
+        <h2 class="lets-talk-heading reveal">Let&rsquo;s Talk<br><em>Strategy.</em></h2>
+      </div>
+    </section>
+
+    <!-- ================================================
+         SECOND TICKER
+         ================================================ -->
+    <div class="ticker ticker-light" aria-hidden="true">
+      <div class="ticker-track ticker-track-rev">
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+        <span>THE HE CREATIVE</span><span class="tick-dot">•</span>
+      </div>
+    </div>
+
+    <!-- ================================================
+         IMAGE STRIP
+         ================================================ -->
+    <div class="img-strip parallax-img">
+      <img src="images/brand-strip.png" alt="The HE Creative Agency brand">
+    </div>
+
+    <!-- ================================================
+         PROCESS
+         ================================================ -->
+    <section class="process" id="process">
+      <div class="section-wrap">
+        <p class="handle reveal">@the_he_creative_agency</p>
+        <p class="section-eyebrow reveal">03 — Process</p>
+        <h2 class="section-heading reveal">How we<br><em>work.</em></h2>
+        <div class="process-row">
+          <div class="process-step reveal">
+            <span class="step-n">01</span>
+            <h3 class="step-name">Discover</h3>
+            <p class="step-body">Deep dive into your brand, audience and ambitions. We listen before we create.</p>
+          </div>
+          <div class="process-sep reveal" aria-hidden="true">→</div>
+          <div class="process-step reveal">
+            <span class="step-n">02</span>
+            <h3 class="step-name">Strategy</h3>
+            <p class="step-body">A clear creative and business strategy forms the foundation for everything that follows.</p>
+          </div>
+          <div class="process-sep reveal" aria-hidden="true">→</div>
+          <div class="process-step reveal">
+            <span class="step-n">03</span>
+            <h3 class="step-name">Design</h3>
+            <p class="step-body">Thoughtful, considered design that solves the right problems beautifully.</p>
+          </div>
+          <div class="process-sep reveal" aria-hidden="true">→</div>
+          <div class="process-step reveal">
+            <span class="step-n">04</span>
+            <h3 class="step-name">Refine</h3>
+            <p class="step-body">Collaborative iteration until every detail feels exactly right.</p>
+          </div>
+          <div class="process-sep reveal" aria-hidden="true">→</div>
+          <div class="process-step reveal">
+            <span class="step-n">05</span>
+            <h3 class="step-name">Launch</h3>
+            <p class="step-body">A confident launch &mdash; and ongoing support as your brand evolves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         CONTACT
+         ================================================ -->
+    <section class="contact" id="contact">
+      <div class="section-wrap contact-grid">
+        <div class="contact-left">
+          <p class="handle reveal">@the_he_creative_agency</p>
+          <p class="section-eyebrow reveal">04 — Contact</p>
+          <h2 class="section-heading reveal">Let&rsquo;s<br><em>create.</em></h2>
+          <div class="contact-info reveal">
+            <a href="mailto:hello@hecreativeagency.com" class="contact-email">hello@hecreativeagency.com</a>
+            <div class="contact-socials">
+              <a href="https://instagram.com/the_he_creative_agency" target="_blank" rel="noopener noreferrer" class="contact-social">@the_he_creative_agency ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right reveal">
+          <form class="form" id="form" novalidate>
+            <div class="field">
+              <label for="f-name" class="field-label">Name</label>
+              <input type="text" id="f-name" name="name" class="field-input" placeholder="Your name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email" class="field-label">Email</label>
+              <input type="email" id="f-email" name="email" class="field-input" placeholder="your@email.com" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-project" class="field-label">Project type</label>
+              <input type="text" id="f-project" name="project" class="field-input" placeholder="Brand identity, website design…">
+            </div>
+            <div class="field">
+              <label for="f-message" class="field-label">Message</label>
+              <textarea id="f-message" name="message" class="field-input field-textarea" placeholder="Tell us about your project…" required></textarea>
+            </div>
+            <button type="submit" class="form-btn">
+              Send Enquiry <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="form-success" id="form-success" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logomark logomark-light">
+        <span>HE</span>
+        <div class="logomark-rule"></div>
+      </div>
+      <p class="footer-copy">&copy; 2026 The HE Creative Agency. Sydney, Australia.</p>
+      <a href="https://instagram.com/the_he_creative_agency" target="_blank" rel="noopener noreferrer" class="footer-ig">@the_he_creative_agency</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
