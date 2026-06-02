@@ -177,7 +177,9 @@ const counterObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
 
-// ----- Contact Form -----
+// ----- Contact Form — SMS via sms: URI (Option 1) -----
+// On mobile this opens the Messages app with the enquiry pre-filled.
+// On desktop it shows a copy-ready message as fallback.
 
 const form        = document.getElementById('form');
 const formSuccess = document.getElementById('form-success');
@@ -185,17 +187,36 @@ const formSuccess = document.getElementById('form-success');
 if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const btn = form.querySelector('.form-btn');
-    const orig = btn.innerHTML;
-    btn.innerHTML = 'Sending…';
-    btn.disabled = true;
-    setTimeout(() => {
-      form.reset();
-      btn.innerHTML = orig;
-      btn.disabled = false;
-      formSuccess.textContent = "Message sent — we'll be in touch soon.";
-      formSuccess.classList.add('show');
-      setTimeout(() => formSuccess.classList.remove('show'), 5000);
-    }, 1200);
+
+    const name    = (document.getElementById('f-name')?.value    || '').trim();
+    const email   = (document.getElementById('f-email')?.value   || '').trim();
+    const project = (document.getElementById('f-project')?.value || '').trim();
+    const message = (document.getElementById('f-message')?.value || '').trim();
+
+    const body = [
+      'New enquiry — The HE Creative Agency',
+      '',
+      `Name: ${name}`,
+      `Email: ${email}`,
+      project ? `Project: ${project}` : null,
+      '',
+      message,
+    ].filter(l => l !== null).join('\n');
+
+    const phone   = '+61497860003';
+    const encoded = encodeURIComponent(body);
+
+    // sms: URI — works on iOS and Android; silently does nothing on desktop
+    const smsLink = document.createElement('a');
+    smsLink.href  = `sms:${phone}?body=${encoded}`;
+    smsLink.style.display = 'none';
+    document.body.appendChild(smsLink);
+    smsLink.click();
+    document.body.removeChild(smsLink);
+
+    form.reset();
+    formSuccess.textContent = 'On mobile, your Messages app will open with this enquiry pre-filled — just hit send. On desktop, please email hello@hecreativeagency.com.';
+    formSuccess.classList.add('show');
+    setTimeout(() => formSuccess.classList.remove('show'), 10000);
   });
 }
