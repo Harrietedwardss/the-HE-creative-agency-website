@@ -283,20 +283,34 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 /* ----- Hero ----- */
 
 .hero {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100svh;
-  display: flex;
-  align-items: flex-end;
-  padding: 96px var(--pad) 72px;
   overflow: hidden;
 }
 
-.hero-inner {
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 96px var(--pad) 72px;
   position: relative;
   z-index: 2;
-  max-width: var(--max-w);
-  margin: 0 auto;
+}
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 100svh;
+}
+
+.hero-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .hero-label {
@@ -315,12 +329,11 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 
 .hero-title {
   font-family: var(--serif);
-  font-size: clamp(56px, 8.5vw, 118px);
+  font-size: clamp(42px, 5.5vw, 92px);
   font-weight: 300;
   line-height: 1.04;
   color: var(--black);
   margin-bottom: 52px;
-  max-width: 880px;
 }
 
 .hero-title em { font-style: italic; }
@@ -361,22 +374,6 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(7px); }
-}
-
-.hero-bg {
-  position: absolute;
-  bottom: -6%;
-  right: var(--pad);
-  font-family: var(--serif);
-  font-size: clamp(200px, 30vw, 420px);
-  font-weight: 300;
-  color: var(--black);
-  opacity: 0.032;
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-  letter-spacing: 0.04em;
 }
 
 /* ----- Ticker ----- */
@@ -427,6 +424,63 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 }
 
 .about-left .section-heading { margin-bottom: 32px; }
+
+/* About images (right column) */
+.about-images {
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.about-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.about-img-main:hover img { transform: scale(1.03); }
+
+.about-img-detail {
+  position: absolute;
+  bottom: 0;
+  left: -28px;
+  width: 52%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  outline: 6px solid var(--white);
+  box-shadow: 0 8px 32px rgba(26,25,23,0.12);
+}
+
+.about-img-detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Full-width image strip */
+.img-strip {
+  width: 100%;
+  height: clamp(280px, 40vw, 560px);
+  overflow: hidden;
+}
+
+.img-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.img-strip:hover img { transform: scale(1.02); }
 
 .img-ph {
   aspect-ratio: 4 / 5;
@@ -967,15 +1021,21 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 /* ----- Responsive ----- */
 
 @media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60svh auto;
+  }
+
+  .hero-image { min-height: unset; order: -1; }
+  .hero-content { padding-top: 40px; }
+
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: clamp(40px, 7vw, 72px);
   }
 
-  .quotes-grid { gap: 48px; }
-
-  .work-grid { grid-auto-rows: 52vw; }
+  .about-img-detail { left: 0; width: 44%; }
 }
 
 @media (max-width: 768px) {
@@ -989,7 +1049,8 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 
   .hamburger { display: flex; }
 
-  .hero { padding-top: 90px; padding-bottom: 52px; }
+  .hero { grid-template-rows: 55svh auto; }
+  .hero-content { padding-top: 32px; padding-bottom: 52px; }
 
   .hero-foot {
     flex-direction: column;
@@ -997,7 +1058,8 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
     gap: 28px;
   }
 
-  .hero-bg { display: none; }
+  .about-img-detail { display: none; }
+  .about-images { padding-bottom: 0; }
 
   .service {
     grid-template-columns: 44px 1fr;

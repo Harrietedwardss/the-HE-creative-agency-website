@@ -40,7 +40,6 @@
         </div>
       </a>
       <div class="nav-right">
-        <a href="#work" class="nav-link">Work</a>
         <a href="#process" class="nav-link">Process</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
@@ -57,7 +56,6 @@
       <a href="#home" class="mobile-link">Home</a>
       <a href="#about" class="mobile-link">About</a>
       <a href="#services" class="mobile-link">Services</a>
-      <a href="#work" class="mobile-link">Work</a>
       <a href="#process" class="mobile-link">Process</a>
       <a href="#contact" class="mobile-link">Contact</a>
     </div>
@@ -67,7 +65,7 @@
 
     <!-- Hero -->
     <section class="hero" id="hero">
-      <div class="hero-inner">
+      <div class="hero-content">
         <p class="hero-label fade-up">
           <span>Est. 2025</span>
           <span class="rule-sep">—</span>
@@ -86,7 +84,12 @@
           </a>
         </div>
       </div>
-      <div class="hero-bg" aria-hidden="true">HE</div>
+      <!--
+        hero.jpg = the model in all-black holding the "the HE" brand card (portrait image)
+      -->
+      <div class="hero-image fade-up delay-1">
+        <img src="images/hero.jpg" alt="The HE Creative Agency">
+      </div>
     </section>
 
     <!-- Ticker -->
@@ -119,22 +122,6 @@
           <div class="about-left">
             <p class="section-eyebrow reveal">01 — About</p>
             <h2 class="section-heading reveal">Strategy-led<br><em>creativity.</em></h2>
-            <div class="about-image reveal">
-              <!--
-                TO ADD YOUR IMAGE:
-                Replace the div below with:
-                <img src="images/about.jpg" alt="The HE Creative Agency">
-              -->
-              <div class="img-ph">
-                <div class="img-ph-logo">
-                  <span>HE</span>
-                  <div class="img-ph-rule"></div>
-                </div>
-              </div>
-              <p class="img-caption">London-based creative studio &mdash; Est. 2025</p>
-            </div>
-          </div>
-          <div class="about-right">
             <p class="about-body reveal">
               The HE Creative Agency is a boutique creative studio built on the belief that great design is never accidental. We combine rigorous strategy with refined visual craft to build brands that resonate, convert, and endure.
             </p>
@@ -156,15 +143,36 @@
               </div>
             </div>
           </div>
+          <!--
+            about-main.jpg  = lookbook/magazine open on concrete floor with heels (portrait)
+            about-detail.jpg = silver ornate tray with HE logo (landscape)
+          -->
+          <div class="about-images reveal">
+            <div class="about-img-main">
+              <img src="images/about-main.jpg" alt="The HE Creative Agency lookbook">
+            </div>
+            <div class="about-img-detail">
+              <img src="images/about-detail.jpg" alt="The HE Creative Agency">
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Brand image strip -->
+    <!--
+      brand-strip.jpg = three brand cards laid out on dark asphalt (landscape/portrait)
+    -->
+    <div class="img-strip reveal">
+      <img src="images/brand-strip.jpg" alt="The HE Creative Agency brand">
+    </div>
 
     <!-- Services -->
     <section class="services" id="services">
       <div class="section-wrap">
         <div class="services-head">
           <p class="section-eyebrow reveal">02 — Services</p>
+          <!-- section number unchanged -->
           <h2 class="section-heading reveal">What we<br><em>create.</em></h2>
         </div>
         <ul class="services-list" role="list">
@@ -220,75 +228,10 @@
       </div>
     </section>
 
-    <!-- Work -->
-    <section class="work" id="work">
-      <div class="section-wrap work-head-wrap">
-        <p class="section-eyebrow reveal">03 — Work</p>
-        <h2 class="section-heading reveal">Selected<br><em>projects.</em></h2>
-      </div>
-
-      <!--
-        TO ADD YOUR IMAGES:
-        Replace each <div class="work-ph"><span>0X</span></div> with:
-        <img src="images/project-1.jpg" alt="Project name">
-
-        The grid structure (tall / wide / square cells) stays the same.
-        Just swap the placeholder div for an <img> tag.
-      -->
-      <div class="work-grid">
-        <div class="work-cell cell-tall reveal" data-title="Studio Noir" data-cat="Brand Identity">
-          <div class="work-ph"><span>01</span></div>
-          <div class="work-over">
-            <div class="work-over-info">
-              <span class="work-cat">Brand Identity</span>
-              <h3 class="work-title">Studio Noir</h3>
-            </div>
-            <span class="work-view">View →</span>
-          </div>
-        </div>
-        <div class="work-cell cell-wide reveal" data-title="Maison Dix" data-cat="Website Design">
-          <div class="work-ph"><span>02</span></div>
-          <div class="work-over">
-            <div class="work-over-info">
-              <span class="work-cat">Website Design</span>
-              <h3 class="work-title">Maison Dix</h3>
-            </div>
-            <span class="work-view">View →</span>
-          </div>
-        </div>
-        <div class="work-cell reveal" data-title="The Edit" data-cat="Creative Direction">
-          <div class="work-ph"><span>03</span></div>
-          <div class="work-over">
-            <div class="work-over-info">
-              <span class="work-cat">Creative Direction</span>
-              <h3 class="work-title">The Edit</h3>
-            </div>
-            <span class="work-view">View →</span>
-          </div>
-        </div>
-        <div class="work-cell reveal" data-title="Atelier Collective" data-cat="Social Strategy">
-          <div class="work-ph"><span>04</span></div>
-          <div class="work-over">
-            <div class="work-over-info">
-              <span class="work-cat">Social Strategy</span>
-              <h3 class="work-title">Atelier Collective</h3>
-            </div>
-            <span class="work-view">View →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lightbox -->
-      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project detail" hidden>
-        <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
-        <div class="lightbox-body" id="lightbox-body"></div>
-      </div>
-    </section>
-
     <!-- Process -->
     <section class="process" id="process">
       <div class="section-wrap">
-        <p class="section-eyebrow reveal">04 — Process</p>
+        <p class="section-eyebrow reveal">03 — Process</p>
         <h2 class="section-heading reveal">How we<br><em>work.</em></h2>
         <div class="process-row">
           <div class="process-step reveal">
@@ -324,36 +267,11 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-      <div class="section-wrap">
-        <p class="section-eyebrow testimonials-eyebrow reveal">05 — Kind Words</p>
-        <div class="quotes-grid">
-          <blockquote class="quote reveal">
-            <div class="quote-mark" aria-hidden="true">&ldquo;</div>
-            <p class="quote-text">Working with HE was a transformative experience. They didn&rsquo;t just design our brand &mdash; they understood it at a level we hadn&rsquo;t even articulated ourselves.</p>
-            <footer class="quote-credit">
-              <span class="quote-name">A. Laurent</span>
-              <span class="quote-role">Founder, Studio Noir</span>
-            </footer>
-          </blockquote>
-          <blockquote class="quote reveal">
-            <div class="quote-mark" aria-hidden="true">&ldquo;</div>
-            <p class="quote-text">The level of strategic thinking and aesthetic refinement is extraordinary. Every deliverable felt considered, intentional, and completely aligned with our vision.</p>
-            <footer class="quote-credit">
-              <span class="quote-name">M. Chen</span>
-              <span class="quote-role">Creative Director, Maison Dix</span>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact -->
     <section class="contact" id="contact">
       <div class="section-wrap contact-grid">
         <div class="contact-left">
-          <p class="section-eyebrow reveal">06 — Contact</p>
+          <p class="section-eyebrow reveal">04 — Contact</p>
           <h2 class="section-heading reveal">Let&rsquo;s<br><em>create.</em></h2>
           <div class="contact-info reveal">
             <a href="mailto:hello@hecreativeagency.com" class="contact-email">hello@hecreativeagency.com</a>
