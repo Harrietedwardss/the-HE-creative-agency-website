@@ -5,9 +5,8 @@
 // ----- Custom Cursor -----
 
 const cursorGlass = document.getElementById('cursor-glass');
-const cursorDot   = document.getElementById('cursor-dot');
 let mouseX = 0, mouseY = 0;
-let glassX = 0, glassY = 0, dotX = 0, dotY = 0;
+let glassX = 0, glassY = 0;
 
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX; mouseY = e.clientY;
@@ -17,12 +16,8 @@ document.addEventListener('mouseleave', () => document.body.classList.remove('cu
 document.addEventListener('mouseenter', () => document.body.classList.add('cursor-on'));
 
 function animateCursor() {
-  dotX   += (mouseX - dotX)   * 0.88;
-  dotY   += (mouseY - dotY)   * 0.88;
   glassX += (mouseX - glassX) * 0.12;
   glassY += (mouseY - glassY) * 0.12;
-  cursorDot.style.left   = dotX   + 'px';
-  cursorDot.style.top    = dotY   + 'px';
   cursorGlass.style.left = glassX + 'px';
   cursorGlass.style.top  = glassY + 'px';
   requestAnimationFrame(animateCursor);
