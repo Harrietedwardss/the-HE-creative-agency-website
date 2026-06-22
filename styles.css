@@ -436,7 +436,7 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 
 /* ----- EDITORIAL GALLERY ----- */
 
-.gallery { background: var(--black); padding: 4px; }
+.gallery { background: var(--grey-2); padding: 4px; }
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -445,7 +445,7 @@ body.cursor-hover .cursor-dot   { width: 8px; height: 8px; }
 }
 .gallery-cell { overflow: hidden; position: relative; }
 .gallery-full { grid-column: span 2; grid-row: 1; }
-.gallery-tall { /* right cell, row 2 */ }
+.gallery-tall { grid-column: span 2; grid-row: 2; }
 
 .gallery-cell img { transition: transform 0.8s var(--ease-out); }
 .gallery-cell:hover img { transform: scale(1.04); }
